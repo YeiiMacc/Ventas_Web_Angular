@@ -1,0 +1,25 @@
+.sticky-top {
+    background-color: #000000 !important;
+}
+
+nav .nav-link, .dropdown-item {
+    color: #00bb00;
+}
+
+nav .dropdown-menu {
+    background-color: #1a1a1a !important;
+}
+
+nav .dropdown-item:focus, .dropdown-item:hover {
+    background-color: #3a3a3a !important;
+}
+
+nav .btn-outline-success {
+    color: #00bb00  !important;
+    border-color: #00bb00  !important;
+}
+
+nav .btn-outline-success:hover {
+    color: #000000  !important;
+    border-color: #00bb00  !important;
+}
