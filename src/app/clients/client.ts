@@ -1,12 +1,8 @@
 export class Client {
-    
-    constructor (
-        public id: number,
-        public firstName: string, 
-        public lastName: string, 
-        public email: string,
-        public createdAt: string,
-        public updatedAt: string
-    ) {}
-
+    id: number = 0;
+    firstName: string = '';
+    lastName: string = '';
+    email: string = '';
+    createdAt: string = '';
+    updatedAt: string ='';
 }
