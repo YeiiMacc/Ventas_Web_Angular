@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --primary:#9CA30C;
+    --primary-light:#6b7000;
+    /* --secondary:#612a65;
+    --secondary-light:#d800e7; */
+
+    /* --gradient:linear-gradient(90deg, var(--primary), var(--primary-light)); */
+    /* --gradient-secondary:linear-gradient(90deg, var(--secondary), var(--secondary-light)); */
+
+    --size-title-h1: 2.1rem;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* font-family: 'Roboto', sans-serif;
+    font-size: var(--font--text); */
+}

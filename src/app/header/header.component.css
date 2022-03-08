@@ -3,7 +3,15 @@
 }
 
 nav .nav-link, .dropdown-item {
-    color: #00bb00;
+    color: #ffffff;
+}
+
+nav .navbar-nav .nav-link:focus, .nav-link:hover {
+    color: #7ed47e  !important;
+}
+
+nav .navbar-nav .nav-item .active {
+    color: #00ff00  !important;
 }
 
 nav .dropdown-menu {
