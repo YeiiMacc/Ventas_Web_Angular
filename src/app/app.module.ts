@@ -13,8 +13,9 @@ import { FormComponent } from './clients/form/form.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'/clients', pathMatch: 'full'},
-  {path: 'directives', component: FooterComponent},
-  {path: 'clients', component:ClientsComponent},
+  {path: 'directives', component: FormComponent},
+  {path: 'clients', component: ClientsComponent},
+  {path: 'clients/form', component: FormComponent },
 ];
 
 @NgModule({
