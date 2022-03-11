@@ -29,4 +29,8 @@ export class ClientService {
     return this.http.get<Client>(`${this.urlEndPoint}/${id}`)
   }
 
+  update(client: Client): Observable<Client> {
+    return this.http.put<Client>(`${this.urlEndPoint}/update/${client.id}`, client, { headers: this.httpHeaders })
+  }
+
 }

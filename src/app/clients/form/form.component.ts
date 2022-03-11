@@ -24,12 +24,12 @@ export class FormComponent implements OnInit {
     this.uploadFormData()
   }
 
-  public alertSuccess(FullName: string): void {
+  public alertSuccess(fullName: string, titleAlert: string): void {
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: `New Client Created!!!`,
-      text: FullName,
+      title: titleAlert,
+      text: fullName,
       showConfirmButton: false,
       timer: 4500
     })
@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
     this.clientService.create(this.client).subscribe(
       response => {
         this.router.navigate(['/clients']);
-        this.alertSuccess(response.firstName + ' ' + response.lastName);
+        this.alertSuccess(response.firstName + ' ' + response.lastName, 'New Client Created!!!');
       }
     );
   }
@@ -51,6 +51,14 @@ export class FormComponent implements OnInit {
         this.clientService.getClient(id).subscribe((client) => this.client = client)
       }
     })
+  }
+
+  public update(): void {
+    this.clientService.update(this.client).subscribe( response => {
+      this.router.navigate(['/clients'])
+      this.alertSuccess(response.firstName + ' ' + response.lastName, 'Client Updated!!!');
+    }
+    )
   }
 
 }
