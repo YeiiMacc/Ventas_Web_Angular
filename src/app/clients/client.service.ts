@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ClientService {
 
   private urlEndPoint: string = 'http://localhost:8080/api/clients';
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
 
   constructor(private http: HttpClient) { }
 
@@ -21,8 +21,12 @@ export class ClientService {
     // );
   }
 
-  create(client: Client) : Observable<Client> {
-    return this.http.post<Client>(this.urlEndPoint+'/save', client, {headers: this.httpHeaders});
+  create(client: Client): Observable<Client> {
+    return this.http.post<Client>(this.urlEndPoint + '/save', client, { headers: this.httpHeaders });
+  }
+
+  getClient(id: number): Observable<Client> {
+    return this.http.get<Client>(`${this.urlEndPoint}/${id}`)
   }
 
 }

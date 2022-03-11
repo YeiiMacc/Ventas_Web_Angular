@@ -13,10 +13,11 @@ import { FormComponent } from './clients/form/form.component';
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 
 const routes: Routes = [
-  {path: '', redirectTo:'/clients', pathMatch: 'full'},
-  {path: 'directives', component: FormComponent},
-  {path: 'clients', component: ClientsComponent},
-  {path: 'clients/form', component: FormComponent },
+  { path: '', redirectTo: '/clients', pathMatch: 'full' },
+  { path: 'directives', component: FormComponent },
+  { path: 'clients', component: ClientsComponent },
+  { path: 'clients/form', component: FormComponent },
+  { path: 'clients/form/:id', component: FormComponent },
 ];
 
 @NgModule({
