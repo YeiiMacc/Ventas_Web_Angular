@@ -4,7 +4,11 @@
     <button class="btn btn-rounded btn-outline-primary" type="button" [routerLink]="['/clients/form']">New </button>
 </div>
 
-<div class="table-responsive">
+<div class="alert alert-info" role="alert" *ngIf="clients?.length == 0">
+    <strong> No data to show! </strong>
+</div>
+
+<div class="table-responsive" *ngIf="clients?.length != 0">
     <table class="table table-striped">
         <thead>
             <tr>
