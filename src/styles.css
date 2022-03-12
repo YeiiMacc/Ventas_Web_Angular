@@ -19,3 +19,12 @@
     /* font-family: 'Roboto', sans-serif;
     font-size: var(--font--text); */
 }
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 100px;
+}
