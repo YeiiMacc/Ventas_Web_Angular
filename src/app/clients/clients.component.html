@@ -27,9 +27,15 @@
                 <td> {{ client.createdAt }} </td>
                 <td> {{ client.updatedAt }} </td>
                 <td>
-                    <button type="button" name="button" [routerLink]="['/clients/form', client.id]"
-                        class="btn btn-outline-warning">
+                    <button type="button" name="edit" [routerLink]="['/clients/form', client.id]"
+                        class="btn btn-warning">
                         Edit
+                    </button>
+                </td>
+                <td>
+                    <button type="button" name="delete" (click)="delete(client)"
+                        class="btn btn-danger">
+                        Delete
                     </button>
                 </td>
             </tr>
