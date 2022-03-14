@@ -56,7 +56,7 @@ export class FormComponent implements OnInit {
   public update(): void {
     this.clientService.update(this.client).subscribe( response => {
       this.router.navigate(['/clients'])
-      this.alertSuccess(response.firstName + ' ' + response.lastName, 'Client Updated!!!');
+      this.alertSuccess(response.client.firstName + ' ' + response.client.lastName, response.message);
     }
     )
   }

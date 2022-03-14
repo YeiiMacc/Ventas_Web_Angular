@@ -26,6 +26,7 @@ export class ClientService {
 
   create(client: Client): Observable<Client> {
     return this.http.post<Client>(this.urlEndPoint + '/save', client, { headers: this.httpHeaders }).pipe(
+      map((response: any) => response.client as Client),
       catchError(e => {
         Swal.fire(e.error.message, e.error.error, 'error');
         return throwError( () => e );
@@ -43,8 +44,8 @@ export class ClientService {
     );
   }
 
-  update(client: Client): Observable<Client> {
-    return this.http.put<Client>(`${this.urlEndPoint}/update/${client.id}`, client, { headers: this.httpHeaders }).pipe(
+  update(client: Client): Observable<any> {
+    return this.http.put(`${this.urlEndPoint}/update/${client.id}`, client, { headers: this.httpHeaders }).pipe(
       catchError(e => {
         Swal.fire(e.error.message, e.error.error, 'error');
         return throwError( () => e );
@@ -54,6 +55,7 @@ export class ClientService {
 
   delete(id: number): Observable<Client> {
     return this.http.delete<Client>(`${this.urlEndPoint}/delete/${id}`, {headers: this.httpHeaders}).pipe(
+      map((response: any) => response.client as Client),
       catchError(e => {
         Swal.fire(e.error.message, e.error.error, 'error');
         return throwError( () => e );
