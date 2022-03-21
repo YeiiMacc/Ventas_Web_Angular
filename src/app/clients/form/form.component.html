@@ -1,30 +1,58 @@
 <div class="card bg-dark text-white mt-5">
     <div class="card-header">{{title}}</div>
     <div class="card-body">
-        <form>
+        <form #formClient="ngForm">
             <div class="form-group row mt-3">
                 <label for="firstName" class="col-form-label col-sm-2">First Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="firstName" id="firstName" class="form-control" [(ngModel)]="client.firstName">
+                    <input type="text" name="firstName" id="firstName" class="form-control" required
+                        [(ngModel)]="client.firstName" minlength="3" #firstName="ngModel">
+                    <div class="alert alert-danger" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                        <div *ngIf="firstName.errors.required">
+                            First Name is required
+                        </div>
+                        <div *ngIf="firstName.errors.minlength">
+                            Minimum 3 characters required.
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row mt-3">
                 <label for="LastName" class="col-form-label col-sm-2">Last Name</label>
                 <div class="col-sm-6">
-                    <input type="text" name="LastName" id="LastName" class="form-control" [(ngModel)]="client.lastName">
+                    <input type="text" name="LastName" id="LastName" class="form-control" required
+                        [(ngModel)]="client.lastName" minlength="3" #lastName="ngModel">
+                    <div class="alert alert-danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                        <div *ngIf="lastName.errors.required">
+                            Last Name is required
+                        </div>
+                        <div *ngIf="lastName.errors.minlength">
+                            Minimum 3 characters required.
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group row mt-3">
                 <label for="email" class="col-form-label col-sm-2">Email</label>
                 <div class="col-sm-6">
-                    <input type="email" name="email" id="email" class="form-control" [(ngModel)]="client.email">
+                    <input type="email" name="email" id="email" class="form-control" required email
+                        [(ngModel)]="client.email" #email="ngModel">
+                    <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors.required">
+                            Email is required
+                        </div>
+                        <div *ngIf="email.errors.email">
+                            Invalid email format - xample@example.com  
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="from-group row mt-3">
                 <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!client.id else btnUpdate">Create</button>
+                    <button class="btn btn-primary" role="button" (click)="create()"
+                        *ngIf="!client.id else btnUpdate" [disabled]="!formClient.form.valid">Create</button>
                     <ng-template #btnUpdate>
-                        <button class="btn btn-warning" role="button" (click)="update()" >Edit</button>
+                        <button class="btn btn-warning" role="button" (click)="update()" [disabled]="!formClient.form.valid">Edit</button>
                     </ng-template>
                 </div>
             </div>
