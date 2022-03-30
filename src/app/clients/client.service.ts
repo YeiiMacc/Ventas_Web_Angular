@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 
 @Injectable({
@@ -25,6 +26,7 @@ export class ClientService {
 
         return clients.map(client => {
           client.firstName = client.firstName.toUpperCase();
+          client.createdAt = formatDate(client.createdAt, 'dd-MM-yyyy', 'en-Us');
           return client;
         });
       }
