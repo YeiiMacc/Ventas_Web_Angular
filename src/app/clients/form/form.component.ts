@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
 
   public client: Client = new Client();
   public title: string = 'New client';
+  public errors: string[];
 
   constructor(
     private clientService: ClientService,
@@ -36,12 +37,17 @@ export class FormComponent implements OnInit {
   }
 
   public create(): void {
-    this.clientService.create(this.client).subscribe(
-      response => {
+    this.clientService.create(this.client).subscribe({
+      next: (response) => {
         this.router.navigate(['/clients']);
         this.alertSuccess(response.firstName + ' ' + response.lastName, 'New Client Created!!!');
+      },
+      error: (err) => {
+        this.errors = err.error.errors as string[];
+        console.error(err.status);
+        console.error(err.error.errors);
       }
-    );
+    });
   }
 
   public uploadFormData(): void {
@@ -54,11 +60,17 @@ export class FormComponent implements OnInit {
   }
 
   public update(): void {
-    this.clientService.update(this.client).subscribe( response => {
-      this.router.navigate(['/clients'])
-      this.alertSuccess(response.client.firstName + ' ' + response.client.lastName, response.message);
-    }
-    )
+    this.clientService.update(this.client).subscribe({
+      next: (response) => {
+        this.router.navigate(['/clients'])
+        this.alertSuccess(response.client.firstName + ' ' + response.client.lastName, response.message);
+      },
+      error: (err) => {
+        this.errors = err.error.errors as string[];
+        console.error(err.status);
+        console.error(err.error.errors);
+      }
+    });
   }
 
 }
