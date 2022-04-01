@@ -11,6 +11,11 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { FormComponent } from './clients/form/form.component';
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es'
+import localeEn from '@angular/common/locales/en'
+
+registerLocaleData(localeEn, 'en');
 
 const routes: Routes = [
   { path: '', redirectTo: '/clients', pathMatch: 'full' },
