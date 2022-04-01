@@ -25,10 +25,10 @@ export class ClientService {
         let clients = response as Client[];
 
         return clients.map(client => {
-          client.firstName = client.firstName.toUpperCase();
+          // client.firstName = client.firstName.toUpperCase();
           // client.createdAt = formatDate(client.createdAt, 'EEEE dd-MMMM-yyyy', 'en');
-          let datePipe = new DatePipe('en');
-          client.createdAt = datePipe.transform(client.createdAt, 'EEEE dd, MMMM yyyy');
+          // let datePipe = new DatePipe('en');
+          // client.createdAt = datePipe.transform(client.createdAt, 'EEEE dd, MMMM yyyy');
           return client;
         });
       }

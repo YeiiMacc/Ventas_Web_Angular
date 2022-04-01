@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -12,10 +12,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormComponent } from './clients/form/form.component';
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es'
 import localeEn from '@angular/common/locales/en'
+// import localeEs from '@angular/common/locales/es'
 
 registerLocaleData(localeEn, 'en');
+// registerLocaleData(localeEs, 'es');
 
 const routes: Routes = [
   { path: '', redirectTo: '/clients', pathMatch: 'full' },
@@ -40,7 +41,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     SweetAlert2Module.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'en' },
+    // {provide: LOCALE_ID, useValue: 'es' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
